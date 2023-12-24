@@ -35,6 +35,8 @@ dependencies {
 	//외부 라이브러리 사용
 	implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.0")
 
+	//validator
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
 	//JUnit4 추가
 	testImplementation("org.junit.vintage:junit-vintage-engine") {
