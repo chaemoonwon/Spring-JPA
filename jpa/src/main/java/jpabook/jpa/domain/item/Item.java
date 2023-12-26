@@ -45,7 +45,4 @@ public abstract class Item {    // 구현체를 가지고 사용할 것임
     }
 
 
-
-
-
 }
