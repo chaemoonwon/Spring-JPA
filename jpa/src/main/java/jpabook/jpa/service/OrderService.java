@@ -8,9 +8,12 @@ import jpabook.jpa.domain.item.Item;
 import jpabook.jpa.repository.ItemRepository;
 import jpabook.jpa.repository.MemberRepository;
 import jpabook.jpa.repository.OrderRepository;
+import jpabook.jpa.repository.OrderSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -39,12 +42,8 @@ public class OrderService {
         //주문상품 생성
         OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), count);
 
-
-
-
         //주문 생성
         Order order = Order.createOrder(member, delivery, orderItem);
-
 
         //주문 저장
         //Cascade로 인해 delivery와 orderItem이 연쇄하여 save() 됨
@@ -65,7 +64,9 @@ public class OrderService {
     }
 
     //검색
-
+    public List<Order> findOrders(OrderSearch orderSearch) {
+        return orderRepository.findAllByCriteria(orderSearch);
+    }
 
 
 }
